@@ -6,21 +6,27 @@ import './App.css';
 import Header from "./Header";
 import Home from "./Home";
 import Checkout from "./Checkout";
+import Login from "./Login";
 
 function App() {
   return (
     <Router>
       <div className='app'>
         {/* outside Switch, always gets rendered */}
-        <Header />
 
         <Switch>
           <Route path="/checkout">
+            <Header />
             <Checkout />
+          </Route>
+
+          <Route path="/login">
+            <Login />
           </Route>
 
           {/* default route always at the bottom */}
           <Route path="/">
+            <Header />
             <Home />
           </Route>
         </Switch>
