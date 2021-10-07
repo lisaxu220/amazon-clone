@@ -8,4 +8,5 @@
 
 .product__rating {
   display: flex;
+  margin: 4px 0;
 }

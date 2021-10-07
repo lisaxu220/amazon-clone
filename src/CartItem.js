@@ -1,7 +1,16 @@
 import React from 'react';
 import './CartItem.css';
+import { useStateValue } from './StateProvider';
 
 function CartItem({ id, image, title, price, rating}) {
+  const [{ cart }, dispatch] = useStateValue();
+
+  const removeFromCart = () => {
+    dispatch({
+      type: 'REMOVE_FROM_CART',
+      id: id
+    })
+  }
 
   return (
     <div className="cartItem">
@@ -19,7 +28,7 @@ function CartItem({ id, image, title, price, rating}) {
             ))}
         </div>
         
-        <button className="button__small">
+        <button className="cartItem__button button__small" onClick={removeFromCart}>
           Remove from basket
         </button>
       </div>
@@ -28,4 +37,4 @@ function CartItem({ id, image, title, price, rating}) {
   )
 }
 
-export default CartItem
+export default CartItem;
