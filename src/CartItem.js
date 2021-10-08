@@ -32,7 +32,6 @@ function CartItem({ id, image, title, price, rating}) {
           Remove from basket
         </button>
       </div>
-
     </div>
   )
 }
