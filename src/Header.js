@@ -6,9 +6,16 @@ import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useStateValue } from './StateProvider';
+import { auth } from './firebase';
 
 function Header() {
-  const [{cart}, dispatch] = useStateValue();
+  const [{cart, user}, dispatch] = useStateValue();
+
+  const handleAuth = () => {
+    if (user) {
+      auth.signOut();
+    }
+  }
 
   return (
     <div className='header'>
@@ -22,10 +29,10 @@ function Header() {
       </div>
 
       <div className="header__nav">
-        <Link to="/login">
-          <div className="header__option">
-            <span className="header__optionLineOne">Hello Guest</span>
-            <span className="header__optionLineTwo">Sign in</span>
+        <Link to={!user && "/login"}>
+          <div onClick={handleAuth} className="header__option">
+            <span className="header__optionLineOne">Hello {user?.email}</span>
+            <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
           </div>
         </Link>
 

@@ -6,7 +6,7 @@ import CartItem from './CartItem';
 import { useStateValue } from './StateProvider';
 
 function Checkout() {
-  const [{ cart }] = useStateValue();
+  const [{ cart, user }] = useStateValue();
 
   return (
     <div className="checkout">
@@ -14,6 +14,7 @@ function Checkout() {
         <img src="https://newsroom.mastercard.com/wp-content/uploads/2014/02/MWC-MasterCard-Booth-Banner.jpg" alt="" className="checkout__ad" />
 
         <div className="checkout__title">
+          <h3>{user?.email}</h3>
           <h2>Your Shopping Cart</h2>
         </div>
       
