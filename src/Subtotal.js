@@ -1,13 +1,13 @@
-import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 import React from 'react'
 import CurrencyFormat from "react-currency-format";
+import { Link } from 'react-router-dom';
 import { getCartTotal } from './reducer';
 import { useStateValue } from './StateProvider';
 import "./Subtotal.css";
 
 function Subtotal() {
-  
-  const [{ cart }, dispatch] = useStateValue();
+
+  const [{ cart }] = useStateValue();
 
   console.log('cart here', cart);
   return (
@@ -30,7 +30,9 @@ function Subtotal() {
         prefix={"$"}
       />
 
-      <button className="button__large">Checkout</button>
+      <Link to="/payment">
+        <button className="button__large">Checkout</button>
+      </Link>
     </div>
   )
 }
