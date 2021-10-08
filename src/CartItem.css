@@ -1,21 +1,16 @@
 .cartItem {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  margin: 30px auto;
 }
 
 .cartItem__info {
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
-  width: 60%;
+  padding-left: 30px;
 }
 
 .cartItem__image {
-  max-height: 150px;
-  width: 40%;
   object-fit: contain;
-  margin: 12px auto;
+  width: 180px;
+  height: 180px;
 }
 
 .cartItem__button {

@@ -29,7 +29,7 @@ function CartItem({ id, image, title, price, rating}) {
         </div>
         
         <button className="cartItem__button button__small" onClick={removeFromCart}>
-          Remove from basket
+          Remove from cart
         </button>
       </div>
     </div>
