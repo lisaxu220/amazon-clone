@@ -10,7 +10,6 @@
 .cartItem__image {
   object-fit: contain;
   width: 180px;
-  height: 180px;
 }
 
 .cartItem__button {

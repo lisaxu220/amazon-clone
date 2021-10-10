@@ -33,3 +33,10 @@
   margin-left: 25px;
 }
 
+.payment__details > form {
+  max-width: 400px;
+}
+
+.payment__priceContainer > h3 {
+  margin: 8px;
+}

@@ -40,6 +40,14 @@
   justify-content: space-evenly;
 }
 
+.header__nav > a {
+  text-decoration: none;
+}
+
+.header__nav > a:hover {
+  border: 1px solid white;
+}
+
 .header__option {
   display: flex;
   flex-direction: column;

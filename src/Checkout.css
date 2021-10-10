@@ -8,6 +8,7 @@
 .checkout__right {
   display: flex;
   margin-left: 16px;
+  width: 35%;
 }
 
 .checkout__title {

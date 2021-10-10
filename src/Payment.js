@@ -51,7 +51,7 @@ function Payment() {
     }).then(({ paymentIntent }) => {
       db
         .collection('users')
-        .doc(user?.id)
+        .doc(user?.uid)
         .collection('orders')
         .doc(paymentIntent.id)
         .set({
@@ -59,6 +59,9 @@ function Payment() {
           amount: paymentIntent.amount,
           created: paymentIntent.created
         })
+
+
+      console.log("Paying user>>", {user})
 
       setSucceeded(true);
       setError(null);
@@ -122,9 +125,9 @@ function Payment() {
               <div className="payment__priceContainer">
                 <CurrencyFormat
                   renderText={(value) => (
-                      <h3>
-                        <strong>Order Total: {value}</strong>
-                      </h3>
+                    <h3>
+                      <strong>Order Total: {value}</strong>
+                    </h3>
                   )}
                   decimalScale={2}
                   value={getCartTotal(cart)}
@@ -132,7 +135,7 @@ function Payment() {
                   thousandSeparator={true}
                   prefix={"$"}
                 />
-                <button disabled={processing || disabled || succeeded}>
+                <button className="button__large" disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                 </button>
               </div>

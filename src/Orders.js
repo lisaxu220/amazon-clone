@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { useStateValue } from './StateProvider';
 
@@ -14,23 +14,24 @@ function Orders() {
     if (user) {
       db
         .collection('users')
-        .doc(user?.id)
+        .doc(user?.uid)
         .collection('orders')
         .orderBy('created', 'desc')
-        .onSnapshot(snapshot => {
+        .onSnapshot(snapshot => (
           setOrders(snapshot.docs.map(doc => ({
             id: doc.id,
             data: doc.data()
           })))
-        })
+        ))
     } else {
       setOrders([])
     }
+
   }, [user])
 
   return (
     <div className="orders">
-      <h1>Your orders</h1>
+      <h1>Order History</h1>
 
       <div className="orders__list">
         {orders?.map(order => (

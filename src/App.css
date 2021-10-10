@@ -6,6 +6,7 @@
   color: #111;
   border-radius: 5px;
   padding: 6px;
+  width: 140px;
 }
 
 .button__large {
@@ -16,6 +17,7 @@
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
   width: 100%;
+  font-weight: bolder;
 }
 
 .button__small:hover, .button__large:hover {
