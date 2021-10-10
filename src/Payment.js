@@ -9,6 +9,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CartItem from './CartItem';
 
 import './Payment.css';
+import { db } from './firebase';
 
 function Payment() {
   const [{ cart, user }]= useStateValue();
@@ -22,6 +23,8 @@ function Payment() {
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
+
+  const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     const getClientSecret = async () => {
@@ -46,9 +49,20 @@ function Payment() {
         card: elements.getElement(CardElement)
       }
     }).then(({ paymentIntent }) => {
+      db
+        .collection('users')
+        .doc(user?.id)
+        .collection('orders')
+        .doc(paymentIntent.id)
+        .set({
+          cart: cart,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created
+        })
+
       setSucceeded(true);
       setError(null);
-      setProcessing(false);
+      setProcessing(false)
 
       dispatch({
         type: 'EMPTY_CART'

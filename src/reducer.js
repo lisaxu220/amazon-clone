@@ -19,7 +19,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: []
-      }
+      };
 
     case 'REMOVE_FROM_CART':
       const index = state.cart.findIndex(
